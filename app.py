@@ -1,4 +1,5 @@
 import streamlit as st
+
 import pandas as pd
 from sklearn.feature_extraction.text import TfidfVectorizer
 
@@ -25,7 +26,7 @@ closest = df["distance"].nsmallest(10)
 indexes = closest.index
 
 st.markdown('''
-You want to listen to something like:
+You will enjoy songs like like:
 ''')
 for idx in indexes:
     df[["artist_name", "track_name"]].iloc[idx]
