@@ -1,5 +1,7 @@
+from importlib import reload
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+import uvicorn
 
 app = FastAPI()
 
@@ -18,3 +20,7 @@ def index():
 @app.get("/playlist")
 def playlist():
     return {"greeting": "Playlist"}
+
+if __name__ == "__main__":
+    uvicorn.run("main:app", host="0.0.0.0", port=8000)
+    #uvicorn simple:fast --reload  # type: ignore
