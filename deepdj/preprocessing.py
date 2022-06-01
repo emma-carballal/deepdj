@@ -7,7 +7,7 @@ from nltk.tokenize import word_tokenize
 import unidecode
 from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
 from scipy.spatial import distance
-
+from deepdj_processing import deepdj_processing
 
 def get_data():
     """method to load lyrics dataset """
@@ -47,16 +47,28 @@ def cleaning(lyric):
 
 
 
-def vectorizing(lyric):
+def vectorizing_lyrics(df):
     vectorizer = TfidfVectorizer(max_df = 0.5, max_features = 5000, ngram_range=(1,2))
-    if df.shape[0] > 1:
+    #if df.shape[0] > 1:
+    vectorized_lyrics = pd.DataFrame(vectorizer.fit_transform(df).toarray(),
+                                columns = vectorizer.get_feature_names_out())
+    return vectorized_lyrics
 
-        vectorized_lyrics = pd.DataFrame(vectorizer.fit_transform(df['cleaned']).toarray(),
+def vectorizing_prompt(df):
+    vectorizer = TfidfVectorizer(max_df = 0.5, max_features = 5000, ngram_range=(1,2))
+    vectorized_value = pd.DataFrame(vectorizer.transform(df).toarray(),
                                 columns = vectorizer.get_feature_names_out())
-        return vectorized_lyrics
-    else:
-        vectorized_value = pd.DataFrame(vectorizer.transform(df['cleaned']).toarray(),
+    return vectorized_value
+
+def vectorizing_tobi(df,case,vectorizer=False):
+    if case=='lyrics':
+        vectorizer = TfidfVectorizer(max_df = 0.5, max_features = 5000, ngram_range=(1,2))
+        vectorized_value = pd.DataFrame(vectorizer.fit_transform(df).toarray(),
                                 columns = vectorizer.get_feature_names_out())
+        return vectorized_value, vectorizer
+    elif case =='prompt':
+        vectorized_value = pd.DataFrame(vectorizer.transform(df).toarray(),
+                                        columns = vectorizer.get_feature_names_out())
         return vectorized_value
 
 def cos_distance(vectorized_lyrics, vectorized_value):
@@ -68,14 +80,23 @@ def cos_distance(vectorized_lyrics, vectorized_value):
 
 if __name__ == '__main__':
     #get, clean and vectorize data
-    df = get_data()
-    df_prompt = prompt()
-    df['cleaned'] = df['lyrics'].apply(cleaning)
-    df_prompt['cleaned'] = df_prompt['prompt'].apply(cleaning)
-    vectorized_lyrics = df['cleaned'].apply(vectorizing)
-    vectorized_value = df_prompt['cleaned'].apply(vectorizing)
-    print (cos_distance(vectorized_lyrics, vectorized_value))
+    #df = get_data()
+    #df_prompt = prompt()
+    #df['cleaned'] = df['lyrics'].apply(cleaning)
+    #df_prompt['cleaned'] = df_prompt['prompt'].apply(cleaning)
+    #vectorized_lyrics = df['cleaned'].apply(vectorizing)
+    #print(df['cleaned'])
+    #vectorized_lyrics = vectorizing_lyrics(df['cleaned'])
 
+    #vectorized_lyrics, vectorizer = vectorizing_tobi(df['cleaned'],'lyrics')
+    #print(vectorized_lyrics)
+    #vectorized_value = vectorizing_tobi(df_prompt['cleaned'],'prompt',vectorizer)
+    #print(vectorized_value)
+
+    #vectorized_value = df_prompt['cleaned'].apply(vectorizing)
+    #vectorized_value = vectorizing_prompt(df_prompt['cleaned'])
+    #print (cos_distance(vectorized_lyrics, vectorized_value))
+    dj = deepdj_processing('data/tcc_ceds_music_cleaned.csv')
 
 
 #process new data, text prompt
