@@ -24,7 +24,7 @@ class deepdj_processing:
         self.vectorizing('lyrics')
 
 
-    def prompt_process(self, text_input):
+    def prompt_process(self):
         # Read text prompt
         self.prompt()
 
