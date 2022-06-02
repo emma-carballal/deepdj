@@ -45,22 +45,20 @@ def cleaning(lyric):
 
     return cleaned_sentence
 
+     #def vectorizing_lyrics(df):
+       # vectorizer = TfidfVectorizer(max_df = 0.5, max_features = 5000, ngram_range=(1,2))
+        ##if df.shape[0] > 1:
+        #vectorized_lyrics = pd.DataFrame(vectorizer.fit_transform(df).toarray(),
+                                   # columns = vectorizer.get_feature_names_out())
+       # return vectorized_lyrics
 
+   # def vectorizing_prompt(df):
+        #vectorizer = TfidfVectorizer(max_df = 0.5, max_features = 5000, ngram_range=(1,2))
+       # vectorized_value = pd.DataFrame(vectorizer.transform(df).toarray(),
+                                    #columns = vectorizer.get_feature_names_out())
+        #return vectorized_value
 
-def vectorizing_lyrics(df):
-    vectorizer = TfidfVectorizer(max_df = 0.5, max_features = 5000, ngram_range=(1,2))
-    #if df.shape[0] > 1:
-    vectorized_lyrics = pd.DataFrame(vectorizer.fit_transform(df).toarray(),
-                                columns = vectorizer.get_feature_names_out())
-    return vectorized_lyrics
-
-def vectorizing_prompt(df):
-    vectorizer = TfidfVectorizer(max_df = 0.5, max_features = 5000, ngram_range=(1,2))
-    vectorized_value = pd.DataFrame(vectorizer.transform(df).toarray(),
-                                columns = vectorizer.get_feature_names_out())
-    return vectorized_value
-
-def vectorizing_tobi(df,case,vectorizer=False):
+def vectorizing_all(df,case,vectorizer=False):
     if case=='lyrics':
         vectorizer = TfidfVectorizer(max_df = 0.5, max_features = 5000, ngram_range=(1,2))
         vectorized_value = pd.DataFrame(vectorizer.fit_transform(df).toarray(),
@@ -88,16 +86,19 @@ if __name__ == '__main__':
     #print(df['cleaned'])
     #vectorized_lyrics = vectorizing_lyrics(df['cleaned'])
 
-    #vectorized_lyrics, vectorizer = vectorizing_tobi(df['cleaned'],'lyrics')
+    #vectorized_lyrics, vectorizer = vectorizing_all(df['cleaned'],'lyrics')
     #print(vectorized_lyrics)
-    #vectorized_value = vectorizing_tobi(df_prompt['cleaned'],'prompt',vectorizer)
+    #vectorized_value = vectorizing_all(df_prompt['cleaned'],'prompt',vectorizer)
     #print(vectorized_value)
 
     #vectorized_value = df_prompt['cleaned'].apply(vectorizing)
     #vectorized_value = vectorizing_prompt(df_prompt['cleaned'])
     #print (cos_distance(vectorized_lyrics, vectorized_value))
     dj = deepdj_processing('data/tcc_ceds_music_cleaned.csv')
-
+    res = dj.prompt_process()
+    print(res)
+    res = dj.prompt_process()
+    print(res)
 
 #process new data, text prompt
 #in case of text promt: accept string and return a vector

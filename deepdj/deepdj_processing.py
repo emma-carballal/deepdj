@@ -11,20 +11,26 @@ from scipy.spatial import distance
 class deepdj_processing:
 
     def __init__(self, _name):
-        self.preprocess(_name)
 
-    def preprocess(self, _name):
-        # Read input data
+        # Read lyric data
         self.df = pd.read_csv(_name)
-        self.prompt()
 
         # Clean data
         self.df['cleaned'] = self.df['lyrics'].apply(self.cleaning)
-        self.df_prompt['cleaned'] = self.df_prompt['prompt'].apply(self.cleaning)
 
         # Vectoriye
         self.vectorizer = TfidfVectorizer(max_df = 0.5, max_features = 5000, ngram_range=(1,2))
         self.vectorizing_tobi('lyrics')
+
+
+    def prompt_process(self):
+        # Read text prompt
+        self.prompt()
+
+        # Clean data
+        self.df_prompt['cleaned'] = self.df_prompt['prompt'].apply(self.cleaning)
+
+        # Vectoriye
         self.vectorizing_tobi('prompt')
 
         # Return closest value
@@ -61,11 +67,11 @@ class deepdj_processing:
 
     def vectorizing_tobi(self, case):
         if case=='lyrics':
-            self.vectorized_lyrics = pd.DataFrame(self.vectorizer.fit_transform(self.df).toarray(),
+            self.vectorized_lyrics = pd.DataFrame(self.vectorizer.fit_transform(self.df['cleaned']).toarray(),
                                     columns = self.vectorizer.get_feature_names_out())
         elif case =='prompt':
             print(self.df_prompt)
-            self.vectorized_prompt = pd.DataFrame(self.vectorizer.transform(self.df_prompt).toarray(),
+            self.vectorized_prompt = pd.DataFrame(self.vectorizer.transform(self.df_prompt['cleaned']).toarray(),
                                             columns = self.vectorizer.get_feature_names_out())
             print(self.vectorized_prompt)
 
