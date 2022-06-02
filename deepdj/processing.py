@@ -20,7 +20,7 @@ class deepdj_processing:
 
         # Vectoriye
         self.vectorizer = TfidfVectorizer(max_df = 0.5, max_features = 5000, ngram_range=(1,2))
-        self.vectorizing_tobi('lyrics')
+        self.vectorizing('lyrics')
 
 
     def prompt_process(self):
@@ -31,7 +31,7 @@ class deepdj_processing:
         self.df_prompt['cleaned'] = self.df_prompt['prompt'].apply(self.cleaning)
 
         # Vectoriye
-        self.vectorizing_tobi('prompt')
+        self.vectorizing('prompt')
 
         # Return closest value
         self.cos_distance()
@@ -65,7 +65,7 @@ class deepdj_processing:
         return cleaned_sentence
 
 
-    def vectorizing_tobi(self, case):
+    def vectorizing(self, case):
         if case=='lyrics':
             self.vectorized_lyrics = pd.DataFrame(self.vectorizer.fit_transform(self.df['cleaned']).toarray(),
                                     columns = self.vectorizer.get_feature_names_out())
