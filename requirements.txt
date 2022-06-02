@@ -24,6 +24,7 @@ s3fs
 fastapi
 uvicorn
 
+
 # utilities
 six>=1.14
 joblib

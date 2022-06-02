@@ -1,5 +1,21 @@
 import streamlit as st
 
+header = st.beta_container()
+dataset = st.beta_container()
+features = st.beta_container()
+modelTraining = st.beta_container()
+
+with header:
+    st.title("Welcome to the DeepDJ!")
+
+with dataset:
+    st.header("Music Dataset 1950 to 2019 - Kaggle")
+with features:
+    st.header("Features are created by Emma Caballal, Julia Strahl, Gabriela Pimenta, Hatice Peucker")
+
+with features:
+    features("Let's train together!:)")
+
 
 '''
 ## Get a playlist
