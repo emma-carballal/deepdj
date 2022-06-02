@@ -1,4 +1,4 @@
-from turtle import textinput
+#from turtle import textinput
 import pandas as pd
 import nltk
 from nltk.corpus import stopwords

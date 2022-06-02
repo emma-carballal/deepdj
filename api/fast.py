@@ -22,7 +22,7 @@ def index():
 def playlist(text_input):
     dj1 = deepdj_processing('../deepdj/data/tcc_ceds_music_cleaned.csv')
     #return {"greeting": "Playlist"}
-    return deepdj_processing.prompt_process(text_input)
+    return deepdj_processing.prompt_process()
 
 
 
