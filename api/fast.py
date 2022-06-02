@@ -20,7 +20,7 @@ def index():
 
 @app.get("/playlist")
 def playlist(text_input):
-    dj1 = deepdj_processing('data/tcc_ceds_music_cleaned.csv')
+    dj1 = deepdj_processing('../deepdj/data/tcc_ceds_music_cleaned.csv')
     #return {"greeting": "Playlist"}
     return deepdj_processing.prompt_process(text_input)
 
