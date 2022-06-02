@@ -1,5 +1,5 @@
 
-from deepdj_processing import deepdj_processing
+from deepdj.processing import deepdj_processing
 
 if __name__ == '__main__':
 

@@ -1,4 +1,3 @@
-from turtle import textinput
 import pandas as pd
 import nltk
 from nltk.corpus import stopwords
@@ -24,7 +23,7 @@ class deepdj_processing:
         self.vectorizing('lyrics')
 
 
-    def prompt_process(self, text_input):
+    def prompt_process(self):
         # Read text prompt
         self.prompt()
 
@@ -38,9 +37,10 @@ class deepdj_processing:
         self.cos_distance()
         return self.closest
 
-    def prompt(self, text_input):
+    def prompt(self):
         """input the prompt"""
-        self.df_prompt= pd.DataFrame({'prompt':text_input}, index = pd.RangeIndex(0,1))
+        value = input('Please enter a string:\n')
+        self.df_prompt= pd.DataFrame({'prompt':value}, index = pd.RangeIndex(0,1))
 
     def cleaning(self, lyric):
     # Basic cleaning
