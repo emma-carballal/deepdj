@@ -24,9 +24,9 @@ class deepdj_processing:
         self.vectorizing('lyrics')
 
 
-    def prompt_process(self):
+    def prompt_process(self, text_input):
         # Read text prompt
-        self.prompt()
+        self.prompt(text_input)
 
         # Clean data
         self.df_prompt['cleaned'] = self.df_prompt['prompt'].apply(self.cleaning)

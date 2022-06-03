@@ -16,12 +16,17 @@ with st.form(key='my_form1'):
 
 
 
-deepdj_api_url = f"http://127.0.0.1:8000/playlist?{text_input}"
+#deepdj_api_url = f"http://127.0.0.1:8000/playlist?{text_input}"
 
-response = requests.get(
-    deepdj_api_url
-).json()
+#response = requests.get(
+    #deepdj_api_url
+#).json()
 
+#print(response)
+
+deepdj_api_url = "http://127.0.0.1:8000/"
+params = {"text_input" : text_input}
+response = requests.get(deepdj_api_url, params=params).json()
 print(response)
 
 # df = pd.read_csv("deepdj/data/tcc_ceds_music_cleaned.csv", index_col=False)
