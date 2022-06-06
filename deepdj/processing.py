@@ -1,4 +1,5 @@
-#from turtle import textinput
+
+from unicodedata import name
 import pandas as pd
 import nltk
 from nltk.corpus import stopwords
@@ -8,35 +9,69 @@ from nltk.tokenize import word_tokenize
 import unidecode
 from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
 from scipy.spatial import distance
+import pickle
 
 class deepdj_processing:
 
     def __init__(self, _name):
+        self._name = _name
 
         # Read lyric data
         self.df = pd.read_csv(_name)
 
+    #STEP 1: PRODUCE PICKLE FILES OF VECTORIZER AND VECTORIZED LYRICS
         # Clean data
-        self.df['cleaned'] = self.df['lyrics'].apply(self.cleaning)
+        #self.df['cleaned'] = self.df['lyrics']#.apply(self.cleaning)
 
-        # Vectoriye
-        self.vectorizer = TfidfVectorizer(max_df = 0.5, max_features = 5000, ngram_range=(1,2))
-        self.vectorizing('lyrics')
+        # Vectorize
+        #self.vectorizer = TfidfVectorizer(max_df = 0.5, max_features = 5000, ngram_range=(1,2))
+    #self.vectorizing('lyrics')
+
+        # SAVE VECTORIZER
+        #self.vectorized_lyrics = pd.DataFrame(self.vectorizer.fit_transform(self.df['cleaned']).toarray(),
+                                    #columns = self.vectorizer.get_feature_names_out())
+
+        #self.vectorized_lyrics.to_pickle('vectorized_lyrics.pickle')
+        #self.vectorized_lyrics = pd.read_pickle('vectorized_lyrics.pickle')
+        #print(self.vectorized_lyrics.shape)
+        #self.create_pickles()
+        #pickle.dump(self.vectorizer, open('tfidf.pickle','wb'))
+
+    #STEP 2: LOAD PICKLE FILES: VECTORIZER and VECTORIZED LYRICS
+        self.vectorizer = pickle.load(open('tfidf.pickle','rb'))
+        self.vectorized_lyrics = pd.DataFrame(pd.read_pickle('vectorized_lyrics.pickle'))
+
+    def create_pickles(self):
+        self.df = pd.read_csv(self._name)
+        self.df['cleaned'] = self.df['lyrics']#.apply(self.cleaning)
+        self.pickle_vectorizer = TfidfVectorizer(max_df = 0.5, max_features = 5000, ngram_range=(1,2))
+        self.vectorized_lyrics = pd.DataFrame(self.pickle_vectorizer.fit_transform(self.df['cleaned']).toarray(),
+                                    columns = self.pickle_vectorizer.get_feature_names_out())
+
+        self.vectorized_lyrics.to_pickle('vectorized_lyrics.pickle')
+        pickle.dump(self.pickle_vectorizer, open('tfidf.pickle','wb'))
 
 
     def prompt_process(self, text_input):
+
         # Read text prompt
-        self.prompt()
+        self.prompt(text_input)
 
         # Clean data
         self.df_prompt['cleaned'] = self.df_prompt['prompt'].apply(self.cleaning)
 
-        # Vectoriye
-        self.vectorizing('prompt')
+        # READ VECTORIZER and vectorize prompt
 
-        # Return closest value
-        self.cos_distance()
-        return self.closest
+        self.vectorized_prompt = pd.DataFrame(self.vectorizer.transform(self.df_prompt['cleaned']).toarray(),
+                                            columns = self.vectorizer.get_feature_names_out())
+
+        #output closest songs
+        if text_input=='':
+            return 0
+        else:
+            self.cos_distance()
+            return self.closest
+
 
     def prompt(self, text_input):
         """input the prompt"""
@@ -65,17 +100,6 @@ class deepdj_processing:
         return cleaned_sentence
 
 
-    def vectorizing(self, case):
-        if case=='lyrics':
-            self.vectorized_lyrics = pd.DataFrame(self.vectorizer.fit_transform(self.df['cleaned']).toarray(),
-                                    columns = self.vectorizer.get_feature_names_out())
-        elif case =='prompt':
-            print(self.df_prompt)
-            self.vectorized_prompt = pd.DataFrame(self.vectorizer.transform(self.df_prompt['cleaned']).toarray(),
-                                            columns = self.vectorizer.get_feature_names_out())
-            print(self.vectorized_prompt)
-
-
     def cos_distance(self):
         self.df["distance"] = [distance.cosine(self.vectorized_lyrics.iloc[k], self.vectorized_prompt) for k in range(len(self.vectorized_lyrics))]
-        self.closest = self.df["distance"].nsmallest(60)
+        self.closest = self.df["distance"].nsmallest(20)
