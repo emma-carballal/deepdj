@@ -21,7 +21,7 @@ app.add_middleware(
 
 @app.get("/")
 def playlist(text_input):
-    dj1 = deepdj_processing('/Users/nineve/code/emma-carballal/deepdj/deepdj/data/tcc_ceds_music_cleaned.csv')
+    dj1 = deepdj_processing('/Users/Pimenta/code/emma-carballa/deepdj/deepdj/data/tcc_ceds_music_cleaned.csv')
     res = dj1.prompt_process(text_input)
     return {"res": res}
 

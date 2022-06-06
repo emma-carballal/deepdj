@@ -189,7 +189,6 @@ VSCODE_PID = 10016
 # No pattern-specific variable values.
 
 # Directories
-
 # . (device 16777220, inode 21379968): 26 files, no impossibilities.
 
 # 26 files, no impossibilities in 1 directories.
@@ -205,6 +204,7 @@ push_gcp:
 #  Modification time never checked.
 #  File has not been updated.
 #  commands to execute (from `Makefile', line 48):
+
 	export PROJECT_ID=deepdj
 	gcloud config set project $$PROJECT_ID
 	export DOCKER_IMAGE_NAME=deepdj

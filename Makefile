@@ -44,6 +44,8 @@ run_api:
 build_image:
 	docker build --tag=deepdj .
 
+
+
 push_gcp:
 	export PROJECT_ID=deepdj
 	gcloud config set project $$PROJECT_ID
