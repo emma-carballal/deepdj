@@ -7,7 +7,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 
 # This program built for i386-apple-darwin11.3.0
 
-# Make data base, printed on Mon Jun  6 17:19:04 2022
+# Make data base, printed on Mon Jun  6 17:45:49 2022
 
 # Variables
 
@@ -46,7 +46,7 @@ VSCODE_VERBOSE_LOGGING = true
 # environment
 __CFBundleIdentifier = com.microsoft.VSCode
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /var/folders/hx/f8bsv4js60q0ftym1_4bqm500000gn/T/vscode-ipc-a616e3d0-38c1-4a24-8ae6-5c10a6211246.sock
+VSCODE_IPC_HOOK_EXTHOST = /var/folders/hx/f8bsv4js60q0ftym1_4bqm500000gn/T/vscode-ipc-c67e73db-96fc-4a79-a39e-31d290490464.sock
 # environment
 VSCODE_CWD = /Users/Pimenta/code/emma-carballa/deepdj
 # environment
@@ -112,7 +112,7 @@ USER = Pimenta
 # makefile
 .DEFAULT_GOAL := install_requirements
 # environment
-TERM_SESSION_ID = 2E0361D5-16A5-4450-B497-840174B75988
+TERM_SESSION_ID = 7479B448-EA2F-4C73-B213-3FFFE2BCEDBC
 # environment
 LESS = -R
 # automatic
@@ -142,7 +142,7 @@ TERM_PROGRAM_VERSION = 445
 # environment
 NVM_DIR = /Users/Pimenta/.nvm
 # environment
-XPC_SERVICE_NAME = application.com.microsoft.VSCode.20249028.20249034.5C8D3009-537F-43ED-8BC6-CA4303E8F0DD
+XPC_SERVICE_NAME = application.com.microsoft.VSCode.20249028.20249034.2256AB24-EDA5-4AB3-A928-1498FA1F058F
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
 # automatic
@@ -180,7 +180,7 @@ LANG = C
 # environment
 TERM = xterm-256color
 # environment
-VSCODE_PID = 3329
+VSCODE_PID = 10016
 # variable set hash-table stats:
 # Load=85/1024=8%, Rehash=0, Collisions=2/109=2%
 
@@ -189,10 +189,9 @@ VSCODE_PID = 3329
 # No pattern-specific variable values.
 
 # Directories
+# . (device 16777220, inode 21379968): 26 files, no impossibilities.
 
-# . (device 16777220, inode 21379968): 28 files, no impossibilities.
-
-# 28 files, no impossibilities in 1 directories.
+# 26 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -204,7 +203,8 @@ push_gcp:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  commands to execute (from `Makefile', line 50):
+#  commands to execute (from `Makefile', line 48):
+
 	export PROJECT_ID=deepdj
 	gcloud config set project $$PROJECT_ID
 	export DOCKER_IMAGE_NAME=deepdj
@@ -238,7 +238,7 @@ install_requirements:
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-06 15:48:54
+#  Last modified 2022-06-06 17:27:35
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -287,7 +287,7 @@ deploy_gcp:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  commands to execute (from `Makefile', line 57):
+#  commands to execute (from `Makefile', line 55):
 	gcloud run deploy --image eu.gcr.io/$$PROJECT_ID/$$DOCKER_IMAGE_NAME --platform managed --region europe-west1 --set-env-vars "GOOGLE_APPLICATION_CREDENTIALS=/lunar-inn-346918-f23c3084971a.json"
 	
 
@@ -345,6 +345,6 @@ install:
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Mon Jun  6 17:19:04 2022
+# Finished Make data base on Mon Jun  6 17:45:49 2022
 
  
