@@ -1,1 +1,1 @@
-{"buildTargets":["clean","deploy_heroku","heroku_create_app","heroku_login","install","install_requirements","run_api","streamlit"],"launchTargets":[],"customConfigurationProvider":{"workspaceBrowse":{"browsePath":[],"compilerArgs":[]},"fileIndex":[]}}
+{"buildTargets":["build_image","clean","deploy_gcp","deploy_heroku","heroku_create_app","heroku_login","install","install_requirements","make","push_gcp","run_api","streamlit"],"launchTargets":[],"customConfigurationProvider":{"workspaceBrowse":{"browsePath":[],"compilerArgs":[]},"fileIndex":[]}}
