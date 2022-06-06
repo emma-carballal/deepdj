@@ -40,3 +40,16 @@ clean:
 
 run_api:
 	uvicorn api.fast:app --reload
+
+build_image:
+	docker build --tag=deepdj .
+
+push_gcp:
+	export PROJECT_ID=deepdj
+	gcloud config set project $$PROJECT_ID
+	export DOCKER_IMAGE_NAME=deepdj
+	docker build -t eu.gcr.io/$$PROJECT_ID/$$DOCKER_IMAGE_NAME .
+	docker push eu.gcr.io/$$PROJECT_ID/$$DOCKER_IMAGE_NAME
+
+deploy_gcp:
+	gcloud run deploy --image eu.gcr.io/$$PROJECT_ID/$$DOCKER_IMAGE_NAME --platform managed --region europe-west1 --set-env-vars "GOOGLE_APPLICATION_CREDENTIALS=/lunar-inn-346918-f23c3084971a.json"

@@ -8,6 +8,8 @@ wheel>=0.29
 numpy
 pandas
 scikit-learn
+nltk
+unidecode
 
 # tests/linter
 black
@@ -23,6 +25,7 @@ mlflow
 s3fs
 fastapi
 uvicorn
+
 
 # utilities
 six>=1.14
