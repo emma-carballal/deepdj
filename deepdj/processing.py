@@ -19,23 +19,8 @@ class deepdj_processing:
         # Read lyric data
         self.df = pd.read_csv(_name)
 
-    #STEP 1: PRODUCE PICKLE FILES OF VECTORIZER AND VECTORIZED LYRICS
-        # Clean data
-        #self.df['cleaned'] = self.df['lyrics']#.apply(self.cleaning)
-
-        # Vectorize
-        #self.vectorizer = TfidfVectorizer(max_df = 0.5, max_features = 5000, ngram_range=(1,2))
-    #self.vectorizing('lyrics')
-
-        # SAVE VECTORIZER
-        #self.vectorized_lyrics = pd.DataFrame(self.vectorizer.fit_transform(self.df['cleaned']).toarray(),
-                                    #columns = self.vectorizer.get_feature_names_out())
-
-        #self.vectorized_lyrics.to_pickle('vectorized_lyrics.pickle')
-        #self.vectorized_lyrics = pd.read_pickle('vectorized_lyrics.pickle')
-        #print(self.vectorized_lyrics.shape)
-        #self.create_pickles()
-        #pickle.dump(self.vectorizer, open('tfidf.pickle','wb'))
+# #    STEP 1: PRODUCE PICKLE FILES OF VECTORIZER AND VECTORIZED LYRICS
+        self.create_pickles()
 
     #STEP 2: LOAD PICKLE FILES: VECTORIZER and VECTORIZED LYRICS
         self.vectorizer = pickle.load(open('tfidf.pickle','rb'))

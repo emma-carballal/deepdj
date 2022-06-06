@@ -13,7 +13,8 @@ with st.form(key='my_form1'):
 	text_input = st.text_input(label='Describe what you would  like to hear')
 	submit_button = st.form_submit_button(label='Submit')
 
-deepdj_api_url = "https://cloud-nnuhgwbqna-ew.a.run.app"
+deepdj_api_url = "http://127.0.0.1:8000"
+#deepdj_api_url = "https://cloud-nnuhgwbqna-ew.a.run.app"
 params = {"text_input" : text_input}
 response = requests.get(deepdj_api_url, params=params).json()
 if response['res']!=0:
