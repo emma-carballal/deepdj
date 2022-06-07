@@ -21,6 +21,7 @@ class deepdj_processing:
         self.df = pd.read_csv(_name)
 
 # #    STEP 1: PRODUCE PICKLE FILES OF VECTORIZER AND VECTORIZED LYRICS
+
         # self.create_pickles()
 
 
