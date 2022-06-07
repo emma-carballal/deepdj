@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Tue Jun  7 16:16:51 2022
+# Make data base, printed on Tue Jun  7 17:58:11 2022
 
 # Variables
 
@@ -17,7 +17,7 @@ make: *** No rule to make target 'all'.  Stop.
 # automatic
 ?F = $(notdir $?)
 # environment
-WSLENV = ELECTRON_RUN_AS_NODE/w:WT_SESSION::WT_PROFILE_ID
+WSLENV = VSCODE_WSL_EXT_LOCATION/up
 # default
 .SHELLFLAGS := -c
 # environment
@@ -37,7 +37,7 @@ SHELL = /bin/sh
 # environment
 VSCODE_NLS_CONFIG = {"locale":"en","availableLanguages":{}}
 # environment
-_ = /mnt/c/Users/hatic/AppData/Local/Programs/Microsoft VS Code/bin/code
+_ = /home/htc/.vscode-server/bin/c3511e6c69bb39013c4a4b7b9566ec1ca73fc4d5/node
 # makefile (from 'Makefile', line 1)
 MAKEFILE_LIST :=  Makefile
 # 'override' directive
@@ -55,13 +55,11 @@ LSCOLORS = Gxfxcxdxbxegedabagacad
 # environment
 XDG_RUNTIME_DIR = /mnt/wslg/runtime-dir
 # environment
-VIRTUAL_ENV = /home/htc/.pyenv/versions/3.8.12/envs/deepdj
-# environment
 VSCODE_LOG_STACK = false
 # environment
 PYENV_ROOT = /home/htc/.pyenv
 # environment
-VSCODE_IPC_HOOK_CLI = /mnt/wslg/runtime-dir/vscode-ipc-b4909999-731e-47ed-b3ec-6e5b978c905f.sock
+VSCODE_IPC_HOOK_CLI = /mnt/wslg/runtime-dir/vscode-ipc-31b4bb6a-f76a-44b7-b90d-5ad989267304.sock
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # environment
@@ -81,11 +79,9 @@ PWD = /home/htc/code/emma-carballal/deepdj
 # environment
 SSH_AGENT_PID = 118
 # environment
-WSL_INTEROP = /run/WSL/24258_interop
+WSL_INTEROP = /run/WSL/4516_interop
 # environment
 PULSE_SERVER = /mnt/wslg/PulseServer
-# environment
-WT_SESSION = fcde889d-09c0-42a9-8ab7-7cd669774d88
 # environment
 VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
 # environment
@@ -111,7 +107,7 @@ MAKE = $(MAKE_COMMAND)
 # default
 MAKECMDGOALS := all
 # environment
-SHLVL = 1
+SHLVL = 0
 # default
 MAKE_VERSION := 4.2.1
 # environment
@@ -119,7 +115,7 @@ USER = htc
 # makefile
 .DEFAULT_GOAL := install_requirements
 # environment
-NAME = Code
+NAME = LAPTOP-H4BI0GDU
 # environment
 LESS = -R
 # automatic
@@ -154,8 +150,6 @@ REGION = europe-west1
 BUCKET_NAME = deepdj_bucket
 # environment
 VSCODE_HANDLES_SIGPIPE = true
-# environment
-WT_PROFILE_ID = {2c4de342-38b7-51cf-b940-2309a097f518}
 # default
 MAKEFILES := 
 # automatic
@@ -170,8 +164,6 @@ DOCKER_IMAGE_NAME = deepdj
 LC_ALL = C
 # environment
 PYENV_VIRTUALENV_DISABLE_PROMPT = 1
-# environment
-PYENV_VIRTUAL_ENV = /home/htc/.pyenv/versions/3.8.12/envs/deepdj
 # environment
 HOSTTYPE = x86_64
 # automatic
@@ -197,7 +189,7 @@ VSCODE_EXTHOST_WILL_SEND_SOCKET = true
 # environment
 WSL_DISTRO_NAME = Ubuntu
 # variable set hash-table stats:
-# Load=92/1024=9%, Rehash=0, Collisions=5/117=4%
+# Load=88/1024=9%, Rehash=0, Collisions=5/113=4%
 
 # Pattern-specific Variable Values
 
@@ -205,9 +197,9 @@ WSL_DISTRO_NAME = Ubuntu
 
 # Directories
 
-# . (device 2080, inode 387366): 24 files, no impossibilities.
+# . (device 2080, inode 387366): 26 files, no impossibilities.
 
-# 24 files, no impossibilities in 1 directories.
+# 26 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -277,7 +269,6 @@ deploy_heroku:
 	-@heroku ps:scale web=1
 
 # Not a target:
- 
 .DEFAULT:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
@@ -287,6 +278,7 @@ deploy_gcp:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
+ 
 #  recipe to execute (from 'Makefile', line 62):
 	gcloud run deploy --image eu.gcr.io/${PROJECT_ID}/${DOCKER_IMAGE_NAME} --platform managed --region europe-west1
 
@@ -332,12 +324,12 @@ install:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 40 / storage = 424 B / avg = 10 B
-# current buf: size = 8162 B / used = 424 B / count = 40 / avg = 10 B
+# strcache buffers: 1 (0) / strings = 42 / storage = 448 B / avg = 10 B
+# current buf: size = 8162 B / used = 448 B / count = 42 / avg = 10 B
 
-# strcache performance: lookups = 55 / hit rate = 27%
+# strcache performance: lookups = 57 / hit rate = 26%
 # hash-table stats:
-# Load=40/8192=0%, Rehash=0, Collisions=1/55=2%
-# Finished Make data base on Tue Jun  7 16:16:51 2022
+# Load=42/8192=1%, Rehash=0, Collisions=1/57=2%
+# Finished Make data base on Tue Jun  7 17:58:11 2022
 
  
