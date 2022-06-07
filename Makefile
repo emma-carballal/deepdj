@@ -53,7 +53,7 @@ build_image:
 
 push_gcp:
 	gcloud config set project ${PROJECT_ID}
-	export PROJECT_ID="deepdj-1"
+	export PROJECT_ID=deepdj-1
 	export DOCKER_IMAGE_NAME=deepdj
 	docker build -t eu.gcr.io/${PROJECT_ID}/${DOCKER_IMAGE_NAME} .
 	docker push eu.gcr.io/${PROJECT_ID}/${DOCKER_IMAGE_NAME}
