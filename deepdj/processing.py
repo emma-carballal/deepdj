@@ -22,7 +22,7 @@ class deepdj_processing:
 
 # #    STEP 1: PRODUCE PICKLE FILES OF VECTORIZER AND VECTORIZED LYRICS
 
-        #self.create_pickles()
+        # self.create_pickles()
 
 
     #STEP 2: LOAD PICKLE FILES: VECTORIZER and VECTORIZED LYRICS
