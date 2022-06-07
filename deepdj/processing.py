@@ -7,10 +7,13 @@ import string
 from nltk.stem.wordnet import WordNetLemmatizer
 from nltk.tokenize import word_tokenize
 import unidecode
-from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
+from sklearn.feature_extraction.text import TfidfVectorizer
 from scipy.spatial import distance
 import pickle
-import os
+
+nltk.download('stopwords')
+nltk.download('punkt')
+nltk.download('wordnet')
 
 class deepdj_processing:
 
@@ -67,22 +70,32 @@ class deepdj_processing:
     def cleaning(self, lyric):
     # Basic cleaning
         sentence = lyric.strip() ## remove whitespaces
+        print("remove whitespaces")
         sentence = sentence.lower() ## lowercasing
+        print("lowercasing")
         sentence = ''.join(char for char in sentence if not char.isdigit()) ## removing numbers
+        print("removing numbers")
         sentence = unidecode.unidecode(sentence) # remove accents
+        print("removing accents")
         for punctuation in string.punctuation:
             sentence = sentence.replace(punctuation, '') ## removing punctuation
+        print("removing punctuation")
     # Advanced cleaning
         tokenized_sentence = word_tokenize(sentence) ## tokenizing
+        print("tokenizing")
         stop_words = set(stopwords.words('english')) ## defining stopwords
+        print("defining stopwords")
         tokenized_sentence = [w for w in tokenized_sentence
                                     if not w in stop_words] ## remove stopwords
-        lemmatized_sentence = [WordNetLemmatizer().lemmatize(word, pos = 'v')  # v --> verbs
-                for word in tokenized_sentence]
-        lemmatized_sentence_2 = [WordNetLemmatizer().lemmatize(word, pos = 'n')  # n --> nouns
-                for word in lemmatized_sentence]
-
-        cleaned_sentence = ' '.join(word for word in lemmatized_sentence_2)
+        print("removing stopwords")
+        # lemmatized_sentence = [WordNetLemmatizer().lemmatize(word)  # v --> verbs
+        #         for word in tokenized_sentence]
+        # print("lemmatizing")
+        # lemmatized_sentence_2 = [WordNetLemmatizer().lemmatize(word, pos = 'n')  # n --> nouns
+        #         for word in lemmatized_sentence]
+        # print("lemmatizing nouns")
+        cleaned_sentence = ' '.join(word for word in tokenized_sentence)
+        print("joining words in sentence")
 
         return cleaned_sentence
 
