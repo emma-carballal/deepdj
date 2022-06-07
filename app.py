@@ -18,15 +18,15 @@ deepdj_api_url = "https://deepdj-7ah34aow4a-ew.a.run.app"
 params = {"text_input" : text_input}
 response = requests.get(deepdj_api_url, params=params).json()
 if response['res']!=0:
-    st.write(pd.DataFrame.from_dict(response['res'], orient = 'index')) #turn JSON into DataFrame
+    #st.write(pd.DataFrame.from_dict(response['res'], orient = 'index')) #turn JSON into DataFrame
+    pd.DataFrame.from_dict(response['res'], orient = 'index') #turn JSON into DataFrame
+    df = pd.read_csv("tcc_ceds_music_cleaned.csv", index_col=False)
 
-#df = pd.read_csv("deepdj/data/tcc_ceds_music_cleaned.csv", index_col=False)
-
-#indexes = response['res'].index
+    indexes = response['res'].index
 
 
-#st.markdown('''
-#You will enjoy songs like like:
-#''')
-#for idx in indexes:
-    #df[["artist_name", "track_name"]].iloc[idx]
+    st.write('''
+    You will enjoy songs like:
+    ''')
+    for idx in indexes:
+    df[["artist_name", "track_name"]].iloc[idx]
