@@ -10,6 +10,7 @@ import unidecode
 from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
 from scipy.spatial import distance
 import pickle
+import os
 
 class deepdj_processing:
 
@@ -20,7 +21,9 @@ class deepdj_processing:
         self.df = pd.read_csv(_name)
 
 # #    STEP 1: PRODUCE PICKLE FILES OF VECTORIZER AND VECTORIZED LYRICS
+
         # self.create_pickles()
+
 
     #STEP 2: LOAD PICKLE FILES: VECTORIZER and VECTORIZED LYRICS
         self.vectorizer = pickle.load(open('tfidf.pickle','rb'))
