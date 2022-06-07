@@ -14,8 +14,8 @@ with st.form(key='my_form1'):
 	submit_button = st.form_submit_button(label='Submit')
 
 
-deepdj_api_url = "https://deepdj-7ah34aow4a-ew.a.run.app"
-# deepdj_api_url = "http://127.0.0.1:8000"
+#deepdj_api_url = "https://deepdj-7ah34aow4a-ew.a.run.app"
+deepdj_api_url = "http://127.0.0.1:8000"
 
 params = {"text_input" : text_input}
 response = requests.get(deepdj_api_url, params=params).json()
