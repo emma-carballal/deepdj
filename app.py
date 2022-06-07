@@ -57,7 +57,7 @@ with st.form(key='columns_in_form'):
 deepdj_api_url = "http://127.0.0.1:8000"
 
 params = {"text_input" : text_input}
-response = requests.get(deepdj_api_url, params=params).json()
+response = requests.get(deepdj_api_url, params=params, verify=False).json()
 if response['res']!=0:
     final_result = (pd.DataFrame.from_dict(response['res'], orient = 'index'))#turn JSON into DataFrame
 
