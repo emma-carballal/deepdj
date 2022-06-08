@@ -16,6 +16,8 @@ streamlit:
 heroku_login:
 	-@heroku login
 
+APP_NAME=deepdj
+
 heroku_create_app:
 	-@heroku create ${APP_NAME}
 
