@@ -1,3 +1,23 @@
 {
-  "makefile.extensionOutputFolder": "./.vscode"
+  "makefile.extensionOutputFolder": "./.vscode",
+  "cSpell.words": [
+    "Caballal",
+    "carballal",
+    "ceds",
+    "deedjmanlogogif",
+    "deepdj",
+    "deepdjphotos",
+    "Hatice",
+    "Kaggle",
+    "lyricoastergif",
+    "nrows",
+    "Peucker",
+    "Pimenta",
+    "selectbox",
+    "sklearn",
+    "Strahl",
+    "streamlit",
+    "Tfidf",
+    "Vectorizer"
+  ]
 }
