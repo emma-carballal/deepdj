@@ -4,7 +4,7 @@ import pandas as pd
 from sklearn.feature_extraction.text import TfidfVectorizer
 
 DATE_COLUMN = 'date/time'
-DATA_URL = ('/home/htc/code/emma-carballal/deepdj/tcc_ceds_music_cleaned.csv')
+DATA_URL = ('tcc_ceds_music_cleaned.csv')
 def load_data(nrows):
     data = pd.read_csv(DATA_URL, nrows=nrows)
     lowercase = lambda x: str(x).lower()
@@ -15,7 +15,7 @@ col1, col2, col3 = st.columns(3)
 with col1:
     st.write(' ')
 with col2:
-    st.image("/home/htc/code/emma-carballal/deepdj/deepdjphotos/deedjmanlogogif.gif")
+    st.image("deepdjphotos/deedjmanlogogif.gif")
 with col3:
     st.write(' ')
 header = st.container()
@@ -34,7 +34,7 @@ col4, col5, col6 = st.columns(3)
 with col4:
     st.write(' ')
 with col5:
-    st.image("/home/htc/code/emma-carballal/deepdj/deepdjphotos/lyricoastergif.gif")
+    st.image("deepdjphotos/lyricoastergif.gif")
 with col6:
     st.write(' ')
 
@@ -53,15 +53,15 @@ with st.form(key='columns_in_form'):
         col.selectbox(f'Make a Selection', ['click', 'or click'], key=i)
     submitted = st.form_submit_button('Submit')
 
-#deepdj_api_url = "https://deepdj-7ah34aow4a-ew.a.run.app"
-deepdj_api_url = "http://127.0.0.1:8000"
+deepdj_api_url = "https://deepdj-7ah34aow4a-ew.a.run.app"
+#deepdj_api_url = "http://127.0.0.1:8000"
 
 params = {"text_input" : text_input}
-response = requests.get(deepdj_api_url, params=params, verify=False).json()
+response = requests.get(deepdj_api_url, params=params).json()
 if response['res']!=0:
     final_result = (pd.DataFrame.from_dict(response['res'], orient = 'index'))#turn JSON into DataFrame
 
-    df = pd.read_csv("/home/htc/code/emma-carballal/deepdj/tcc_ceds_music_cleaned.csv", index_col=False)
+    df = pd.read_csv("tcc_ceds_music_cleaned.csv", index_col=False)
 
     indexes = final_result.index
 
