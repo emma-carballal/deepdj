@@ -89,18 +89,18 @@ class deepdj_processing:
         tokenized_sentence = [w for w in tokenized_sentence
                                     if not w in stop_words] ## remove stopwords
         print("removing stopwords")
-        # lemmatized_sentence = [WordNetLemmatizer().lemmatize(word)  # v --> verbs
-        #         for word in tokenized_sentence]
-        # print("lemmatizing")
-        # lemmatized_sentence_2 = [WordNetLemmatizer().lemmatize(word, pos = 'n')  # n --> nouns
-        #         for word in lemmatized_sentence]
-        # print("lemmatizing nouns")
-        cleaned_sentence = ' '.join(word for word in tokenized_sentence)
+        lemmatized_sentence = [WordNetLemmatizer().lemmatize(word, pos = 'v')
+                for word in tokenized_sentence]
+        print("lemmatizing verbs")
+        lemmatized_sentence_2 = [WordNetLemmatizer().lemmatize(word, pos = 'n')
+                for word in lemmatized_sentence]
+        print("lemmatizing nouns")
+        cleaned_sentence = ' '.join(word for word in lemmatized_sentence_2)
         print("joining words in sentence")
 
         return cleaned_sentence
 
 
     def cos_distance(self):
-        self.df["distance"] = [distance.cosine(self.vectorized_lyrics.iloc[k], self.vectorized_prompt) for k in range(len(self.vectorized_lyrics))]
+        self.df["distance"] = [distance.cosine(self.vectorized_lyrics.iloc[int(k)], self.vectorized_prompt) for k in range(len(self.vectorized_lyrics))]
         self.closest = self.df["distance"].nsmallest(20)
