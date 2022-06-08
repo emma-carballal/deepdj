@@ -3,6 +3,7 @@ import requests
 import pandas as pd
 from sklearn.feature_extraction.text import TfidfVectorizer
 
+
 DATE_COLUMN = 'date/time'
 DATA_URL = ('tcc_ceds_music_cleaned.csv')
 def load_data(nrows):
@@ -65,10 +66,9 @@ if response['res']!=0:
 
     indexes = final_result.index
 
-
     st.markdown('''
     You will enjoy songs like:
     ''')
     for idx in indexes:
-        list_lyrics=df[["artist_name", "track_name"]].iloc[int(idx)]
-        st.write(list_lyrics)
+       list_lyrics=df[["artist_name", "track_name"]].iloc[int(idx)]
+       st.write(list_lyrics)
