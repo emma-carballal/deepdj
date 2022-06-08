@@ -43,10 +43,6 @@ with col6:
 with st.form(key='description_form'):
     text_input = st.text_input(label='Describe what you would like to hear in your playlist!')
     submit_button = st.form_submit_button(label='Submit')
-st.markdown('''
-You want to listen to something like:
-''')
-text_input
 
 deepdj_api_url = "https://deepdj-7ah34aow4a-ew.a.run.app"
 
