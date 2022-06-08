@@ -19,7 +19,7 @@ heroku_login:
 APP_NAME=deepdj
 
 heroku_create_app:
-	-@heroku create ${APP_NAME}
+	-@heroku create ${APP_NAME} --region eu
 
 deploy_heroku:
 	-@git push heroku master
