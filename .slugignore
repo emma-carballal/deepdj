@@ -1,0 +1,16 @@
+*.egg-info
+.coverage
+.ipynb_checkpoints
+.DS_Store
+raw_data/
+**/__pycache__/
+.env
+*.ipynb
+*.pickle
+github/
+vscode/
+api/
+deepdj/
+notebooks/
+scripts/
+Makefile
