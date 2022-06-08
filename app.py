@@ -43,20 +43,9 @@ with col6:
 with st.form(key='description_form'):
     text_input = st.text_input(label='Describe what you would like to hear in your playlist!')
     submit_button = st.form_submit_button(label='Submit')
-st.markdown('''
-You want to listen to something like:
-''')
-text_input
-
-with st.form(key='columns_in_form'):
-    cols = st.columns(5)
-    for i, col in enumerate(cols):
-        col.selectbox(f'Make a Selection', ['click', 'or click'], key=i)
-    submitted = st.form_submit_button('Submit')
 
 
 deepdj_api_url = "https://deepdj-7ah34aow4a-ew.a.run.app"
-#deepdj_api_url = "http://127.0.0.1:8000"
 
 
 params = {"text_input" : text_input}
