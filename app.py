@@ -22,7 +22,7 @@ response = requests.get(deepdj_api_url, params=params).json()
 if response['res']!=0:
     final_result = (pd.DataFrame.from_dict(response['res'], orient = 'index'))#turn JSON into DataFrame
 
-    df = pd.read_csv("/Users/justrahl/code/deepdj/api/tcc_ceds_music_cleaned.csv", index_col=False)
+    df = pd.read_csv("tcc_ceds_music_cleaned.csv", index_col=False)
 
     indexes = final_result.index
 
