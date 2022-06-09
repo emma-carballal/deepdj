@@ -52,7 +52,7 @@ with st.form(key='description_form'):
 
 
 st.markdown(f'<h1 style="color:#48c9f8;font-size:6 px;text-align:center;">{"This is your perfect playlist:"}</h1>', unsafe_allow_html=True)
-text_input
+
 
 
 
@@ -85,4 +85,3 @@ if response.ok:
 
 else:
     st.write('I didn´t find anything. Please try again :)')
-
