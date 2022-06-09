@@ -23,12 +23,12 @@ header = st.container()
 dataset = st.container()
 features = st.container()
 with header:
-    st.title("Welcome to the DeepDJ!")
+    st.title("Welcome to DeepDJ!")
 with dataset:
-    st.header("Music Dataset 1950 to 2019 - Kaggle")
+    st.header("Music dataset 1950 to 2019 - Kaggle")
 with features:
-    st.header("Features are created by Emma Caballal, Julia Strahl, Gabriela Pimenta, Hatice Peucker")
-    st.header("Let's train our model together")
+    st.header("Project by Emma Caballal, Julia Strahl, Gabriela Pimenta, Hatice Peucker")
+
 
 col4, col5, col6 = st.columns(3)
 
@@ -44,20 +44,51 @@ with st.form(key='description_form'):
     text_input = st.text_input(label='Describe what you would like to hear in your playlist!')
     submit_button = st.form_submit_button(label='Submit')
 
+
 deepdj_api_url = "https://deepdj-7ah34aow4a-ew.a.run.app"
+#deepdj_api_url = "http://127.0.0.1:8000"
+
 
 params = {"text_input" : text_input}
-response = requests.get(deepdj_api_url, params=params).json()
-if response['res']!=0:
-    final_result = (pd.DataFrame.from_dict(response['res'], orient = 'index'))#turn JSON into DataFrame
+response = requests.get(deepdj_api_url, params=params)
+#if response.status_code == 200:
+    #print("Empty response, try again")
+if response.ok:
+    response = response.json()
 
-    df = pd.read_csv("tcc_ceds_music_cleaned.csv", index_col=False)
+    if response['res']!=0:
+#if response !=0:
+        final_result = (pd.DataFrame.from_dict(response['res'], orient = 'index'))#turn JSON into DataFrame
 
-    indexes = final_result.index
+        df = pd.read_csv("tcc_ceds_music_cleaned.csv", index_col=False)
 
-    st.markdown('''
-    You will enjoy songs like:
-    ''')
-    for idx in indexes:
-       list_lyrics=df[["artist_name", "track_name"]].iloc[int(idx)]
-       st.write(list_lyrics)
+        indexes = final_result.index
+
+        st.markdown('''
+        You will enjoy songs like:
+        ''')
+        for idx in indexes:
+            list_lyrics=df[["artist_name", "track_name"]].iloc[int(idx)]
+            st.write(list_lyrics)
+
+else:
+    st.write('I didn´t find anything. Please try again :)')
+
+#elif response != response.ok:
+    #print('Try again')
+
+
+    #if response['res']!=0:
+##if response !=0:
+        #final_result = (pd.DataFrame.from_dict(response['res'], orient = 'index'))#turn JSON into DataFrame
+
+        #df = pd.read_csv("tcc_ceds_music_cleaned.csv", index_col=False)
+
+        #indexes = final_result.index
+
+        #st.markdown('''
+        #You will enjoy songs like:
+        #''')
+        #for idx in indexes:
+            #list_lyrics=df[["artist_name", "track_name"]].iloc[int(idx)]
+            #st.write(list_lyrics)
