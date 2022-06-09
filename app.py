@@ -1,8 +1,6 @@
 import streamlit as st
 import requests
 import pandas as pd
-from sklearn.feature_extraction.text import TfidfVectorizer
-
 
 DATE_COLUMN = 'date/time'
 DATA_URL = ('tcc_ceds_music_cleaned.csv')
@@ -22,13 +20,18 @@ with col3:
 header = st.container()
 dataset = st.container()
 features = st.container()
+markdown = st.container()
 with header:
-    st.title("Welcome to the DeepDJ!")
+    #st.title("Welcome to the DeepDJ!")
+    st.markdown(f'<h1 style="color:#48c9f8;font-size:60px;text-align:center;">{"Welcome to DeepDj!"}</h1>', unsafe_allow_html=True)
+    #st.success(st.markdown(f'<h1 style="color:#48c9f8;font-size:60px;text-align:center;">{"Welcome to DeepDj!”"}</h1>', unsafe_allow_html=True))
 with dataset:
-    st.header("Music Dataset 1950 to 2019 - Kaggle")
+    #st.header("Music dataset 1950 to 2019 - Kaggle")
+    st.markdown(f'<h1 style="color:#48c9f8;font-size:50px;text-align:center;">{"Music dataset 1950 to 2019 - Kaggle"}</h1>', unsafe_allow_html=True)
+
 with features:
-    st.header("Features are created by Emma Caballal, Julia Strahl, Gabriela Pimenta, Hatice Peucker")
-    st.header("Let's train our model together")
+    #st.header("Project created by Emma Caballal, Julia Strahl, Gabriela Pimenta, Hatice Peucker")
+    st.markdown(f'<h1 style="color:#48c9f8;font-size:30px;text-align:center;">{"Project created by Emma Caballal, Julia Strahl, Gabriela Pimenta, Hatice Peucker"}</h1>', unsafe_allow_html=True)
 
 col4, col5, col6 = st.columns(3)
 
@@ -41,11 +44,11 @@ with col6:
 
 # Using the "with" syntax
 with st.form(key='description_form'):
-    text_input = st.text_input(label='Describe what you would like to hear in your playlist!')
+    st.markdown(f'<h1 style="color:#48c9f8;font-size:10 px;text-align:center;">{"Describe what you would like to hear!"}</h1>', unsafe_allow_html=True)
+    text_input = st.text_input(label='')  # type: ignore
     submit_button = st.form_submit_button(label='Submit')
-st.markdown('''
-You want to listen to something like:
-''')
+
+st.markdown(f'<h1 style="color:#48c9f8;font-size:6 px;text-align:center;">{"This is your perfect playlist:"}</h1>', unsafe_allow_html=True)
 text_input
 
 
