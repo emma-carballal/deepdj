@@ -16,8 +16,10 @@ streamlit:
 heroku_login:
 	-@heroku login
 
+APP_NAME=deepdj
+
 heroku_create_app:
-	-@heroku create ${APP_NAME}
+	-@heroku create ${APP_NAME} --region eu
 
 deploy_heroku:
 	-@git push heroku master
@@ -46,15 +48,8 @@ BUCKET_NAME=deepdj_bucket
 REGION=europe-west1
 DOCKER_IMAGE_NAME=deepdj
 
-build_image:
-	docker build --tag=deepdj .
-
-
-
 push_gcp:
 	gcloud config set project ${PROJECT_ID}
-	export PROJECT_ID=deepdj-1
-	export DOCKER_IMAGE_NAME=deepdj
 	docker build -t eu.gcr.io/${PROJECT_ID}/${DOCKER_IMAGE_NAME} .
 	docker push eu.gcr.io/${PROJECT_ID}/${DOCKER_IMAGE_NAME}
 
