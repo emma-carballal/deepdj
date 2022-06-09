@@ -1,8 +1,6 @@
 import streamlit as st
 import requests
 import pandas as pd
-from sklearn.feature_extraction.text import TfidfVectorizer
-
 
 DATE_COLUMN = 'date/time'
 DATA_URL = ('tcc_ceds_music_cleaned.csv')
@@ -22,12 +20,19 @@ with col3:
 header = st.container()
 dataset = st.container()
 features = st.container()
+markdown = st.container()
 with header:
-    st.title("Welcome to DeepDJ!")
+
+    #st.title("Welcome to the DeepDJ!")
+    st.markdown(f'<h1 style="color:#48c9f8;font-size:60px;text-align:center;">{"Welcome to DeepDj!"}</h1>', unsafe_allow_html=True)
+    #st.success(st.markdown(f'<h1 style="color:#48c9f8;font-size:60px;text-align:center;">{"Welcome to DeepDj!”"}</h1>', unsafe_allow_html=True))
 with dataset:
-    st.header("Music dataset 1950 to 2019 - Kaggle")
+    #st.header("Music dataset 1950 to 2019 - Kaggle")
+    st.markdown(f'<h1 style="color:#48c9f8;font-size:50px;text-align:center;">{"Music dataset 1950 to 2019 - Kaggle"}</h1>', unsafe_allow_html=True)
+
 with features:
-    st.header("Project by Emma Caballal, Julia Strahl, Gabriela Pimenta, Hatice Peucker")
+    #st.header("Project created by Emma Caballal, Julia Strahl, Gabriela Pimenta, Hatice Peucker")
+    st.markdown(f'<h1 style="color:#48c9f8;font-size:30px;text-align:center;">{"Project created by Emma Caballal, Julia Strahl, Gabriela Pimenta, Hatice Peucker"}</h1>', unsafe_allow_html=True)
 
 
 col4, col5, col6 = st.columns(3)
@@ -41,8 +46,15 @@ with col6:
 
 # Using the "with" syntax
 with st.form(key='description_form'):
-    text_input = st.text_input(label='Describe what you would like to hear in your playlist!')
+    st.markdown(f'<h1 style="color:#48c9f8;font-size:10 px;text-align:center;">{"Describe what you would like to hear!"}</h1>', unsafe_allow_html=True)
+    text_input = st.text_input(label='')  # type: ignore
     submit_button = st.form_submit_button(label='Submit')
+
+
+st.markdown(f'<h1 style="color:#48c9f8;font-size:6 px;text-align:center;">{"This is your perfect playlist:"}</h1>', unsafe_allow_html=True)
+text_input
+
+
 
 
 deepdj_api_url = "https://deepdj-7ah34aow4a-ew.a.run.app"
@@ -74,21 +86,3 @@ if response.ok:
 else:
     st.write('I didn´t find anything. Please try again :)')
 
-#elif response != response.ok:
-    #print('Try again')
-
-
-    #if response['res']!=0:
-##if response !=0:
-        #final_result = (pd.DataFrame.from_dict(response['res'], orient = 'index'))#turn JSON into DataFrame
-
-        #df = pd.read_csv("tcc_ceds_music_cleaned.csv", index_col=False)
-
-        #indexes = final_result.index
-
-        #st.markdown('''
-        #You will enjoy songs like:
-        #''')
-        #for idx in indexes:
-            #list_lyrics=df[["artist_name", "track_name"]].iloc[int(idx)]
-            #st.write(list_lyrics)
