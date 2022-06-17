@@ -1,74 +1,19 @@
-# Data analysis
-- Document here the project: deepdj
-- Description: Project Description
-- Data Source:
-- Type of analysis:
+# DeepDJ: a bootcamp team project
 
-Please document the project the better you can.
+DeepDJ is a music playlist creator based on a text promt.
 
-# Startup the project
+The web app was created during the two final project weeks at the Le Wagon bootcamp (April-June 2022).
+The team was composed by:
+* Gabriela Pimenta dos Reis (data sourcing and cleaning)
+* Hatice Peucker (Streamlit interface)
+* Julia Strahl (API)
+* Emma Carballal Haire (deployment on Heroku and Google Cloud Platform)
 
-The initial setup.
+# License
 
-Create virtualenv and install the project:
-```bash
-sudo apt-get install virtualenv python-pip python-dev
-deactivate; virtualenv ~/venv ; source ~/venv/bin/activate ;\
-    pip install pip -U; pip install -r requirements.txt
-```
+DeepDJ is released under the MIT License. See LICENSE file for details.
 
-Unittest test:
-```bash
-make clean install test
-```
+# Links
 
-Check for deepdj in gitlab.com/{group}.
-If your project is not set please add it:
+Web app deployed in Heroku: https://deepdj.herokuapp.com/
 
-- Create a new project on `gitlab.com/{group}/deepdj`
-- Then populate it:
-
-```bash
-##   e.g. if group is "{group}" and project_name is "deepdj"
-git remote add origin git@github.com:{group}/deepdj.git
-git push -u origin master
-git push -u origin --tags
-```
-
-Functionnal test with a script:
-
-```bash
-cd
-mkdir tmp
-cd tmp
-deepdj-run
-```
-
-# Install
-
-Go to `https://github.com/{group}/deepdj` to see the project, manage issues,
-setup you ssh public key, ...
-
-Create a python3 virtualenv and activate it:
-
-```bash
-sudo apt-get install virtualenv python-pip python-dev
-deactivate; virtualenv -ppython3 ~/venv ; source ~/venv/bin/activate
-```
-
-Clone the project and install it:
-
-```bash
-git clone git@github.com:{group}/deepdj.git
-cd deepdj
-pip install -r requirements.txt
-make clean install test                # install and test
-```
-Functionnal test with a script:
-
-```bash
-cd
-mkdir tmp
-cd tmp
-deepdj-run
-```
