@@ -15,5 +15,5 @@ DeepDJ is released under the MIT License. See LICENSE file for details.
 
 # Links
 
-Web app deployed in Heroku: https://deepdj.herokuapp.com/
+Web app deployed on Heroku: https://deepdj.herokuapp.com/
 
